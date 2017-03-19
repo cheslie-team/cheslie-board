@@ -1,4 +1,4 @@
-var game = io('http://localhost:3000'),
+var game = io('http://192.168.0.24:3000'),
     board = ChessBoard('board');
 
 game.on('connect', function () {
@@ -8,5 +8,7 @@ game.on('connect', function () {
 
 game.on('move', function (move) {
     console.log(move);
-    ChessBoard('board', move.board);
+    if (move.gameId === window.location.hash.replace('#', '')) {
+        ChessBoard('board', move.board);
+    }
 });
