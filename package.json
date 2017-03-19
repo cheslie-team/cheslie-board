@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/cheslie-team/cheslie-board#readme",
   "dependencies": {
-    "express": "^4.15.2",
-    "socket.io": "^1.7.3"
+    "express": "^4.15.2"
   }
 }
