@@ -1,4 +1,4 @@
-var game = io('http://192.168.0.24:3000'),
+var game = io('http://localhost:3000'),
     board = ChessBoard('board');
 
 game.on('connect', function () {
