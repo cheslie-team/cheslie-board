@@ -1,0 +1,24 @@
+{
+  "name": "cheslie-board",
+  "version": "1.0.0",
+  "description": "A site for viewing chessboards for different games",
+  "main": "board.js",
+  "scripts": {
+    "start": "node board.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheslie-team/cheslie-board.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cheslie-team/cheslie-board/issues"
+  },
+  "homepage": "https://github.com/cheslie-team/cheslie-board#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^1.7.3"
+  }
+}
