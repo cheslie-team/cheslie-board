@@ -1,6 +1,6 @@
 var express = require('express'),
 	app = express(),
-	port = 8080;
+	port = process.env.PORT || 8081;
 
 app.use('/', express.static('client'));
 
