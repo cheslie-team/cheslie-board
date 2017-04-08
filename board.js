@@ -1,6 +1,27 @@
 var express = require('express'),
 	app = express(),
-	port = 8080;
+	http = require('http').Server(app),
+	io = require('socket.io')(http),
+	port = process.env.PORT || 8080,
+	game = require('socket.io-client')('http://cheslie-game.azurewebsites.net/');
+
+game.on('connect', function () {
+	console.log('Conntected to game');
+	game.emit('subscribe');
+});
+
+game.on('move', function (move) {
+	io.emit('move', move);
+});
+
+io.on('connect', function (socket) {
+    console.log('Looksies! We got ourselves a user!');
+
+    socket.on('server:results', function (data) {
+        console.log("server:results");
+        io.emit('client:display', data);
+    });
+});
 
 app.use('/', express.static('client'));
 
@@ -10,6 +31,6 @@ app.use('/js', express.static('lib/chessboardjs-0.3.0/js'));
 app.use('/css', express.static('lib/chessboardjs-0.3.0/css'));
 app.use('/img', express.static('lib/chessboardjs-0.3.0/img'));
 
-app.listen(port, function () {
+http.listen(port, function () {
     console.log('Running our app at http://localhost:' + port)
 });
