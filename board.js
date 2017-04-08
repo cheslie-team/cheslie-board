@@ -2,8 +2,9 @@ var express = require('express'),
 	app = express(),
 	http = require('http').Server(app),
 	io = require('socket.io')(http),
-	port = process.env.PORT || 8080,
-	game = require('socket.io-client')('http://cheslie-game.azurewebsites.net/');
+	port = process.env.PORT || 8081,
+	gameUrl = process.env.GAME_URL || 'http://localhost:3000',
+	game = require('socket.io-client')(gameUrl);
 
 game.on('connect', function () {
 	console.log('Conntected to game');
