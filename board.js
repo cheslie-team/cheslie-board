@@ -1,6 +1,7 @@
-var express = require('express'),
+var config = require('cheslie-config'),
+	express = require('express'),
 	app = express(),
-	port = process.env.PORT || 8081;
+	port = config.board.port;
 
 app.use('/', express.static('client'));
 
@@ -11,5 +12,5 @@ app.use('/css', express.static('lib/chessboardjs-0.3.0/css'));
 app.use('/img', express.static('lib/chessboardjs-0.3.0/img'));
 
 app.listen(port, function () {
-    console.log('Running our app at http://localhost:' + port)
+	console.log('Running our app at http://localhost:' + port)
 });
