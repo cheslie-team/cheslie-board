@@ -1,14 +1,14 @@
-var game = io('http://localhost:3000'),
+var io = io(),
     board = ChessBoard('board', 'start'),
     gameId = window.location.hash.replace('#', '');
 
 document.getElementById('heading').innerHTML = gameId || 'cheslie-board';
 
-game.on('connect', function () {
-    game.emit('subscribe');
+io.on('connect', function () {
+	console.log('Connected to lobby');
 });
 
-game.on('move', function (move) {
+io.on('move', function (move) {
     if (move.gameId === gameId) {
         ChessBoard('board', move.board);
     }
