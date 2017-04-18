@@ -10,6 +10,9 @@ io.on('connect', function () {
 
 io.on('move', function (move) {
     if (move.gameId === gameId) {
+        debugger;
+        document.getElementById("blackPlayer").innerHTML = move.black;
+        document.getElementById("whitePlayer").innerHTML = move.white;
         ChessBoard('board', move.board);
     }
 });
